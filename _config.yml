@@ -1,0 +1,34 @@
+meta:
+    site_title: "破锅堂"
+    site_subtitle: "打破砂锅问到底"
+    site_language: "zh-cn"
+    author:
+        full_name: Yuanyang Wu
+        short_name: yuanyangwu
+        name: yuanyangwu
+        email: yuanyang_wu@hotmail.com
+
+baseurl: /
+
+markdown: kramdown
+kramdown:
+  input: GFM
+# markdown: maruku
+# maruku:
+#   use_divs: true
+#    use_tex: true
+#    png_engine : blahtex
+#    png_dir    : images/latex/
+#    png_url    : /images/latex/
+
+#pygments: false
+highlighter: pygments
+permalink: /blog/:year/:month/:day/:title
+
+disqus_short_name: ypchenstory
+
+      
+css:
+    - css/screen.css
+
+
