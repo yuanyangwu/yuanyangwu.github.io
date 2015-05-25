@@ -413,7 +413,7 @@ text-align:center;
 }
 
 section.content article p {
-text-indent:2em;
+text-indent:0;
 }
 
 section.content article p.excerpt {
