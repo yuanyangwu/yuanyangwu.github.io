@@ -12,7 +12,7 @@ DevOps的观念正深刻的改变软件开发的方式，使用Vagrant可以几�
 - 安装特定的OS版本
 - 定制VM的外部配件配置，例如USB/Audio，Vagrant推荐base box不要打开这些，因为服务器开发一般不需要它们。
 
-下面的Vagrant官方文档描述了如何创建base box。但是步骤很多，如果能自动完成就造福大众了。
+下面的Vagrant官方文档描述了如何创建base box。但是步骤很多，如果能自动完成这些步骤，就造福大众了。
 
 - http://docs.vagrantup.com/v2/boxes/base.html
 - http://docs.vagrantup.com/v2/virtualbox/boxes.html
@@ -64,6 +64,7 @@ DevOps的观念正深刻的改变软件开发的方式，使用Vagrant可以几�
       sh vagrant-guest.sh
       ```
 5. 打包Vagrant base box。100GB硬盘的VM对应的base box只有730MB，非常经济:)
+    
     ```
     cd ~/vagrant_repo
     vagrant package --base vagrant-ubuntu-server1404-100g --output ubuntu.server1404.100g
@@ -73,7 +74,7 @@ DevOps的观念正深刻的改变软件开发的方式，使用Vagrant可以几�
 
 ### 测试1 - 添加base box
 
-```bash
+```
 vagrant box add --name ubuntu.server1404.100g ~/vagrant_repo/ubuntu.server1404.100g
 ```
 可以用`vagrant box list`检查。
@@ -104,10 +105,11 @@ vagrant destroy -f
 ```
 
 ### 测试3 - 多个VM的Vagrant
-- 新建文件Vagrantfile。注意其中
-  * 设置hostname
-  * 连接"private_network"网络，并指定IP
-  * 修改memory和CPU个数
+新建文件Vagrantfile。注意其中
+
+- 设置hostname
+- 连接"private_network"网络，并指定IP
+- 修改memory和CPU个数
 
 ```
 servers = {
@@ -130,23 +132,25 @@ Vagrant.configure(2) do |config|
   end
 end
 ```
-- 启动VM。会把几个VM都启动
+启动VM。会把几个VM都启动
 
 ```
 vagrant up
 ```
 
-- SSH登入不同VM。可以看到
-  * hostname的确修改成"server1"、"server2"。
-  * 每个VM有2个网卡
-    + 第1个网卡连接NAT（配有Port Forwarding，用于vagrant ssh）
-    + 第2个网卡链接private_network（就是VirtualBox的Hostonly，VM之间，VM和Host OS间，都可以通信）
+SSH登入不同VM
 
 ```
 vagrant ssh server1
 vagrant ssh server2
 ```
 
+可以看到
+
+- hostname的确修改成"server1"、"server2"。
+- 每个VM有2个网卡
+  * 第1个网卡连接NAT（配有Port Forwarding，用于vagrant ssh）
+  * 第2个网卡链接private_network（就是VirtualBox的Hostonly，VM之间，VM和Host OS间，都可以通信）
 
 ```
 +---------+
@@ -158,7 +162,7 @@ vagrant ssh server2
 +---------+
 ```
 
-- 删除VM
+删除VM
 
 ```
 vagrant destroy -f
