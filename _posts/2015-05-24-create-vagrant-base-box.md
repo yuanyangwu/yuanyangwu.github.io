@@ -28,7 +28,7 @@ DevOps的观念正深刻的改变软件开发的方式，使用Vagrant可以几�
 
 ## 使用步骤
 
-1. 安装VirtualBox、Vagrant，因为要用到ssh/scp，如果我们的机器是Windows还要装putty。准备好Ubuntu的安装ISO文件。
+1. 安装VirtualBox、Vagrant，因为要用到ssh/scp，如果我们的机器是Windows还要装cygwin(含openssh)。准备好Ubuntu的安装ISO文件。
 2. 启动VirtualBox创建VM   
    - 命名"vagrant-ubuntu-server1404-100g"
    - RAM 512MB。不要设太大可以让大多数机器默认使用，后面例子会演示如何在使用Vagrant时动态修改这个值
